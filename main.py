@@ -52,7 +52,7 @@ else:
 graph = Graph(data_dir)
 results = top_k_similar_nodes(graph, metric, k)
 
-print(f'Representation={representation_type}, Metric={metric_type}, k={k}\n')
+print(f'Data={data_dir}, Representation={representation_type}, Metric={metric_type}, k={k}\n')
 print('Top-k Results:')
 print('#\tScore\tEdge')
 for i in range(k):

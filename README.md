@@ -16,7 +16,7 @@ To get usage help run:
 
 Running:
 
-    python3 main.py -d ./data/ca-GrQc.txt -r AL -m adamic-adar -k 10
+    python3 main.py -d ./ca-GrQc.txt -r AL -m adamic-adar -k 10
 
 Outputs:
 
@@ -36,3 +36,9 @@ Outputs:
     10  6.70    (5210, 7444)
     
     Finished in 18.0 seconds.
+
+## Authors
+
+* Konstantina Kivraki
+* Nikolena Repousi
+* Elena Υfanti
