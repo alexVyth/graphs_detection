@@ -14,7 +14,6 @@ class AdjacencyMatrixGraph():
         self.adj_matrix = np.zeros([self.num_vertices(), self.num_vertices()], dtype=int)
         for u, v in data:
             self.adj_matrix[self.dictionary[u], self.dictionary[v]] = 1
-            self.adj_matrix[self.dictionary[v], self.dictionary[u]] = 1
 
     def contains_vertex(self, vertex):
         """Check if given vertex belongs to the Graph.
@@ -57,7 +56,6 @@ class AdjacencyListGraph():
         self.adj_list = defaultdict(set)
         for u, v in data:
             self.adj_list[u].add(v)
-            self.adj_list[v].add(u)
 
     def contains_vertex(self, vertex):
         """Check if given vertex belongs to the Graph.
@@ -101,14 +99,14 @@ class CompressedSparseRowsGraph():
         data = load_dataset(datadir)
         self.dictionary, self.inv_dictionary = create_dict(data)
         # input data is sorted by rows so columns matrix is ready
-        self.columns = np.array(data[:, 1], dtype=int)
+        self.columns = list(data[:, 1])
         rows = np.array(data[:, 0], dtype=int)
         # count element on each row
         row_count = np.unique(rows, return_counts=True)[1]
         # add zero in front of the row_count matrix
         row_count = np.insert(row_count, 0, 0)
         # # prefix sum on row_count to obtain row_index matrix
-        self.row_index = np.cumsum(row_count)
+        self.row_index = list(np.cumsum(row_count))
 
     def contains_vertex(self, vertex):
         """Check if given vertex belongs to the Graph.
