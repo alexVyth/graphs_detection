@@ -13,7 +13,7 @@ start = time.time()
 # Parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--dir', help='path of data text file')
-parser.add_argument('-r', '--represantation',
+parser.add_argument('-r', '--representation',
                     help='type of graph representation. '
                          'Options: "AM" for Adjacency Matrix,'
                          '"AL" for Adjacency List and'
@@ -24,19 +24,19 @@ parser.add_argument('-m', '--metric',
 parser.add_argument('-k', '--kedges', help='k number of k-top edges')
 args = parser.parse_args()
 data_dir = args.dir
-represantation_type = args.represantation
+representation_type = args.representation
 metric_type = args.metric
 k = int(args.kedges)
 
-# Choose graph represantation
-if represantation_type == 'AL':
+# Choose graph representation
+if representation_type == 'AL':
     Graph = AdjacencyListGraph
-elif represantation_type == 'AM':
+elif representation_type == 'AM':
     Graph = AdjacencyMatrixGraph
-elif represantation_type == 'CSR':
+elif representation_type == 'CSR':
     Graph = CompressedSparseRowsGraph
 else:
-    sys.exit('Wrong graph represantation type')
+    sys.exit('Wrong graph representation type')
 
 # Choose metric
 if metric_type == 'neighbors':
@@ -52,9 +52,9 @@ else:
 graph = Graph(data_dir)
 results = top_k_similar_nodes(graph, metric, k)
 
-print(f'Reprasantation={represantation_type}, Metric={metric_type}, k={k}\n')
+print(f'Representation={representation_type}, Metric={metric_type}, k={k}\n')
 print('Top-k Results:')
 print('#\tScore\tEdge')
 for i in range(k):
-    print(f'{i+1}\t{results[i][0]}\t{results[i][1]}')
-print(f'\nFinished in {time.time() - start} seconds.')
+    print(f'{i+1}\t{results[i][0]:.2f}\t{results[i][1]}')
+print(f'\nFinished in {time.time() - start:.1f} seconds.')
