@@ -36,9 +36,3 @@ Outputs:
     10  6.70    (5210, 7444)
     
     Finished in 18.0 seconds.
-
-## Authors
-
-* Konstantina Kivraki
-* Nikolena Repousi
-* Elena Υfanti
